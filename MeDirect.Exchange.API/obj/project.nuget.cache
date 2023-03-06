@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "GyGeM1g/g8JzvJAKrk3legGqLMQOGjVRsJ9yi3v+jR6cMMIvm2+mc9FlFbBkGcNA7bH5imeFDalMXX64RG8PJg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Burak.Celik\\source\\training\\MeDirect.Exchange\\MeDirect.Exchange.API\\MeDirect.Exchange.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Burak.Celik\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Burak.Celik\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Burak.Celik\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.15.1\\microsoft.visualstudio.azure.containers.tools.targets.1.15.1.nupkg.sha512",
+    "C:\\Users\\Burak.Celik\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\Burak.Celik\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\Burak.Celik\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\Burak.Celik\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
