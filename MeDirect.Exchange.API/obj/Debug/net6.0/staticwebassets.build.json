@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "rga9bIQG6sBEEtu7tKkyybNqSSxZckiGJxXkxRsh4tk=",
+  "Source": "MeDirect.Exchange.API",
+  "BasePath": "_content/MeDirect.Exchange.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

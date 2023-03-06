@@ -1,0 +1,12 @@
+C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.Domain\bin\Debug\net6.0\MeDirect.Exchange.Domain.deps.json
+C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.Domain\bin\Debug\net6.0\MeDirect.Exchange.Domain.dll
+C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.Domain\bin\Debug\net6.0\MeDirect.Exchange.Domain.pdb
+C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.Domain\obj\Debug\net6.0\MeDirect.Exchange.Domain.csproj.AssemblyReference.cache
+C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.Domain\obj\Debug\net6.0\MeDirect.Exchange.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.Domain\obj\Debug\net6.0\MeDirect.Exchange.Domain.AssemblyInfoInputs.cache
+C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.Domain\obj\Debug\net6.0\MeDirect.Exchange.Domain.AssemblyInfo.cs
+C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.Domain\obj\Debug\net6.0\MeDirect.Exchange.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.Domain\obj\Debug\net6.0\MeDirect.Exchange.Domain.dll
+C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.Domain\obj\Debug\net6.0\refint\MeDirect.Exchange.Domain.dll
+C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.Domain\obj\Debug\net6.0\MeDirect.Exchange.Domain.pdb
+C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.Domain\obj\Debug\net6.0\ref\MeDirect.Exchange.Domain.dll

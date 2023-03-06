@@ -13,4 +13,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MeDirect.Exchange.Application\MeDirect.Exchange.Application.csproj" />
+    <ProjectReference Include="..\MeDirect.Exchange.Persistence\MeDirect.Exchange.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>
