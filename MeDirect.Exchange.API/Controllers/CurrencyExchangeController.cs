@@ -1,3 +1,4 @@
+using MeDirect.Exchange.Application.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MeDirect.Exchange.API.Controllers
@@ -9,9 +10,26 @@ namespace MeDirect.Exchange.API.Controllers
 
         private readonly ILogger<CurrencyExchangeController> _logger;
 
-        public CurrencyExchangeController()
+        private readonly ICurrencyExchangeService _currencyExchangeService;
+        public CurrencyExchangeController(ILogger<CurrencyExchangeController> logger, ICurrencyExchangeService currencyExchangeService)
         {
+            _logger = logger;
+            _currencyExchangeService = currencyExchangeService;
+        }
 
+        [HttpGet("executeCurrencyExchange/{baseCurrency}/{targetCurrency}/{amount}/{userId}")]
+        public async Task<IActionResult> ExecuteCurrencyExchange(string baseCurrency, string targetCurrency, decimal amount, int userId)
+        {
+            try
+            {
+
+                var result = await _currencyExchangeService.ExecuteCurrencyExchangeAsync(baseCurrency.ToUpperInvariant(), targetCurrency.ToUpperInvariant(), amount, userId);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 
@@ -28,19 +46,7 @@ namespace MeDirect.Exchange.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet("executeCurrencyExchange/{baseCurrency}/{targetCurrency}/{amount}/{userId}")]
-        public async Task<IActionResult> ExecuteCurrencyExchange(string baseCurrency, string targetCurrency, decimal amount, int userId)
-        {
-            try
-            {
 
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
 
         [HttpGet]
         [Route("getAllCurrencies")]
@@ -48,7 +54,8 @@ namespace MeDirect.Exchange.API.Controllers
         {
             try
             {
-                return Ok();
+                var result = await _currencyExchangeService.GetCurrencyList();
+                return Ok(result);
             }
             catch (Exception ex)
             {
