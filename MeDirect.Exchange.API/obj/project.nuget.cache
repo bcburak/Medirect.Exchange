@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "sGkr1N/3xkcd5WxDmioVxr8UkXJgIrLnTHQZd7ffFrkTPmdOqUqeZ4stZ5Qxy0EJ+G+J5t1Td9AJwvklXROC9w==",
+  "dgSpecHash": "PFVq3IG8TVCHPSAOqXRiZexjPcyp7jU4z0BtsO3WEpbuenurOhipB5Qo8b16UwRmtoOof2WN9IOvOAk1mOaOGg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Burak.Celik\\source\\training\\MeDirect.Exchange\\MeDirect.Exchange.API\\MeDirect.Exchange.API.csproj",
   "expectedPackageFiles": [
@@ -39,6 +39,11 @@
     "C:\\Users\\Burak.Celik\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Burak.Celik\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Burak.Celik\\.nuget\\packages\\newtonsoft.json\\9.0.1\\newtonsoft.json.9.0.1.nupkg.sha512",
+    "C:\\Users\\Burak.Celik\\.nuget\\packages\\serilog\\2.12.0\\serilog.2.12.0.nupkg.sha512",
+    "C:\\Users\\Burak.Celik\\.nuget\\packages\\serilog.extensions.hosting\\5.0.1\\serilog.extensions.hosting.5.0.1.nupkg.sha512",
+    "C:\\Users\\Burak.Celik\\.nuget\\packages\\serilog.extensions.logging\\3.1.0\\serilog.extensions.logging.3.1.0.nupkg.sha512",
+    "C:\\Users\\Burak.Celik\\.nuget\\packages\\serilog.sinks.console\\4.1.0\\serilog.sinks.console.4.1.0.nupkg.sha512",
+    "C:\\Users\\Burak.Celik\\.nuget\\packages\\serilog.sinks.file\\5.0.0\\serilog.sinks.file.5.0.0.nupkg.sha512",
     "C:\\Users\\Burak.Celik\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\Burak.Celik\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\Burak.Celik\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",

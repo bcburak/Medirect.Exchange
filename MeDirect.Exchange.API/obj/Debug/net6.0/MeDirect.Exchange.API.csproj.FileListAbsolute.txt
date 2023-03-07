@@ -67,3 +67,9 @@ C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.API\bin
 C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.API\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.API\bin\Debug\net6.0\Humanizer.dll
 C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.API\bin\Debug\net6.0\Serilog.dll
+C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.API\bin\Debug\net6.0\Serilog.Extensions.Hosting.dll
+C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.API\bin\Debug\net6.0\Serilog.Extensions.Logging.dll
+C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.API\bin\Debug\net6.0\Serilog.Sinks.Console.dll
+C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.API\bin\Debug\net6.0\Serilog.Sinks.File.dll
+C:\Users\Burak.Celik\source\training\MeDirect.Exchange\MeDirect.Exchange.API\bin\Debug\net6.0\logs.json

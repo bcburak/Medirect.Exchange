@@ -29,7 +29,6 @@ namespace MeDirect.Exchange.API.Controllers
         {
             try
             {
-
                 var result = await _currencyExchangeService.ExecuteCurrencyExchangeAsync(baseCurrency.ToUpperInvariant(), targetCurrency.ToUpperInvariant(), amount, userId);
                 return Ok(result);
             }

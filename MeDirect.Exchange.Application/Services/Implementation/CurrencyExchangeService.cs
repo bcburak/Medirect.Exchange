@@ -4,6 +4,7 @@ using MeDirect.Exchange.Application.Responses;
 using MeDirect.Exchange.Application.Services.Interfaces;
 using MeDirect.Exchange.Domain.Contracts;
 using MeDirect.Exchange.Domain.Entities;
+using Microsoft.Extensions.Logging;
 
 namespace MeDirect.Exchange.Application.Services.Implementation
 {
@@ -15,14 +16,14 @@ namespace MeDirect.Exchange.Application.Services.Implementation
         private readonly ITransactionRepository _transactionRepository;
         private readonly IExchangeRateApiService _exchangeRateApiService;
         private readonly ICacheService _cacheManager;
-
+        private readonly ILogger<CurrencyExchangeService> _logger;
 
         public CurrencyExchangeService(ICurrencyRepository currencyRepository,
                                        IExchangeRateRepository exchangeRateRepository,
                                        IUserRepository userRepository,
                                        ITransactionRepository transactionRepository,
                                        IExchangeRateApiService exchangeRateApiService,
-                                       ICacheService cacheManager)
+                                       ICacheService cacheManager, ILogger<CurrencyExchangeService> logger)
         {
             _currencyRepository = currencyRepository;
             _exchangeRateRepository = exchangeRateRepository;
@@ -30,6 +31,7 @@ namespace MeDirect.Exchange.Application.Services.Implementation
             _exchangeRateApiService = exchangeRateApiService;
             _transactionRepository = transactionRepository;
             _cacheManager = cacheManager;
+            _logger = logger;
         }
 
         public async Task<ServiceResponse<TransactionDto>> ExecuteCurrencyExchangeAsync(string baseCurrency, string targetCurrency, decimal amount, int userId)
@@ -42,6 +44,8 @@ namespace MeDirect.Exchange.Application.Services.Implementation
 
             if (exchangeRate == null)
             {
+                _logger.LogWarning("ExecuteCurrencyExchangeAsync, ExchangeRate cache value is null");
+
                 var currencyList = _cacheManager.Get<List<Currency>>(CacheKeys.AllCurrencies);
                 if (currencyList != null)
                 {
@@ -62,6 +66,7 @@ namespace MeDirect.Exchange.Application.Services.Implementation
 
             if (exchangeRate == null)
             {
+                _logger.LogError($"ExecuteCurrencyExchangeAsync, Exchange rate not found for : {baseCurrency}/{targetCurrency}");
                 throw new Exception($"Exchange rate not found for {baseCurrency}/{targetCurrency}.");
             }
 
@@ -80,6 +85,7 @@ namespace MeDirect.Exchange.Application.Services.Implementation
             };
 
             await _transactionRepository.AddAsync(transaction);
+            _logger.LogInformation("ExecuteCurrencyExchangeAsync", $"Success; Adding transaction completed.");
 
             var transactionDto = new TransactionDto
             {
@@ -111,6 +117,8 @@ namespace MeDirect.Exchange.Application.Services.Implementation
             }
             await UpdateCurrencyCacheAsync(currencyList);
 
+            _logger.LogInformation($"GetCurrencyList, UpdatedCurrencies; Adding transaction completed.");
+
             return new ServiceResponse<List<CurrencyDto>>(currencyListFromApi) { Id = new Guid(), IsSuccess = true, Message = "Currency list fetched from api and updated the related cache" };
 
         }
@@ -122,6 +130,11 @@ namespace MeDirect.Exchange.Application.Services.Implementation
             var transactionHistory = await _transactionRepository.GetAllTransactionHistoryByUserId(userId);
 
 
+            if (transactionHistory.Count == 0)
+            {
+                _logger.LogError($"GetTransactionHistoryByUserId, User Id is not valid for: {userId}");
+                throw new Exception($"User Id is not valid for {userId}.");
+            }
 
             return new ServiceResponse<List<Transaction>>(transactionHistory) { Id = new Guid(), IsSuccess = true, Message = "User Transaction list is fetched" };
 
@@ -131,10 +144,21 @@ namespace MeDirect.Exchange.Application.Services.Implementation
 
         private async Task UpdateCurrencyCacheAsync(IEnumerable<Currency> currencyList)
         {
-            var currencies = await _currencyRepository.GetAllAsync();
 
-            var key = CacheKeys.AllCurrencies;
-            _cacheManager.Add(key, currencies, TimeSpan.FromDays(1), false);
+            try
+            {
+                var currencies = await _currencyRepository.GetAllAsync();
+
+                var key = CacheKeys.AllCurrencies;
+                _cacheManager.Add(key, currencies, TimeSpan.FromDays(1), false);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"UpdateCurrencyCacheAsync, There is an issue occured while updating the cache {ex.Message}");
+                throw new Exception($"There is an issue occured while updating the cache {ex.Message}");
+                throw;
+            }
+
 
         }
 
