@@ -1,3 +1,4 @@
+using MeDirect.Exchange.API.Middlewares;
 using MeDirect.Exchange.Application.Registration;
 using MeDirect.Exchange.Persistence.Registration;
 
@@ -30,5 +31,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseMiddleware<RateLimiterMiddleware>();
 
 app.Run();

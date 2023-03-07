@@ -84,7 +84,7 @@ namespace MeDirect.Exchange.Application.Services.Implementation
             //return convertedAmount;
         }
 
-        public async Task<List<CurrencyDto>> GetCurrencyList()
+        public async Task<ServiceResponse<List<CurrencyDto>>> GetCurrencyList()
         {
 
             var currencyListFromApi = await _exchangeRateApiService.GetCurrencyListAsync();
@@ -99,9 +99,23 @@ namespace MeDirect.Exchange.Application.Services.Implementation
             }
             await UpdateCurrencyCacheAsync(currencyList);
 
-            return await _exchangeRateApiService.GetCurrencyListAsync();
+
+            return new ServiceResponse<List<CurrencyDto>>(currencyListFromApi) { Id = new Guid(), IsSuccess = true, Message = "Currency list fetched from api and updated the related cache" };
 
         }
+
+
+        public async Task<ServiceResponse<List<Transaction>>> GetTransactionHistoryByUserId(int userId)
+        {
+
+            var transactionHistory = await _transactionRepository.GetAllTransactionHistoryByUserId(userId);
+
+
+            return new ServiceResponse<List<Transaction>>(transactionHistory) { Id = new Guid(), IsSuccess = true, Message = "User Transaction list is fetched" };
+
+            //return convertedAmount;
+        }
+
 
         private async Task UpdateCurrencyCacheAsync(IEnumerable<Currency> currencyList)
         {

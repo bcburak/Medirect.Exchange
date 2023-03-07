@@ -8,6 +8,9 @@ namespace MeDirect.Exchange.Application.Services.Interfaces
     public interface ICurrencyExchangeService
     {
         Task<ServiceResponse<Transaction>> ExecuteCurrencyExchangeAsync(string baseCurrency, string targetCurrency, decimal amount, int userId);
-        Task<List<CurrencyDto>> GetCurrencyList();
+
+        Task<ServiceResponse<List<CurrencyDto>>> GetCurrencyList();
+
+        Task<ServiceResponse<List<Transaction>>> GetTransactionHistoryByUserId(int userId);
     }
 }
