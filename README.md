@@ -9,7 +9,7 @@ Attension Please! To run the application here are the sample steps;
 
 • Please keep in mind, all secret values(such as db password in connection string and api key value) are protected with dotnet secret, so you need to be replaced with your values.
 
-• To fill Currency table and related Cache key; you need to call GetAllCurrencies endpoint firstly
+• To fill Currency table and related Cache value; you need to call GetAllCurrencies endpoint firstly
 
 • In project I used .NET 6 the create web apis and MS SQL server database to store data.
 
