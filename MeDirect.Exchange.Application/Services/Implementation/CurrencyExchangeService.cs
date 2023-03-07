@@ -32,8 +32,11 @@ namespace MeDirect.Exchange.Application.Services.Implementation
             _cacheManager = cacheManager;
         }
 
-        public async Task<ServiceResponse<Transaction>> ExecuteCurrencyExchangeAsync(string baseCurrency, string targetCurrency, decimal amount, int userId)
+        public async Task<ServiceResponse<TransactionDto>> ExecuteCurrencyExchangeAsync(string baseCurrency, string targetCurrency, decimal amount, int userId)
         {
+
+            User user = await _userRepository.GetByIdAsync(userId);
+
             string cacheKey = $"{CacheKeys.ExchangeRates}_{baseCurrency}_{targetCurrency}";
             var exchangeRate = _cacheManager.Get<ExchangeRate>(cacheKey);
 
@@ -62,7 +65,6 @@ namespace MeDirect.Exchange.Application.Services.Implementation
                 throw new Exception($"Exchange rate not found for {baseCurrency}/{targetCurrency}.");
             }
 
-            User user = await _userRepository.GetByIdAsync(userId);
             decimal convertedAmount = Math.Round(amount * exchangeRate.Rate, 2);
 
             var transaction = new Transaction
@@ -79,9 +81,19 @@ namespace MeDirect.Exchange.Application.Services.Implementation
 
             await _transactionRepository.AddAsync(transaction);
 
-            return new ServiceResponse<Transaction>(transaction) { Id = new Guid(), IsSuccess = true, Message = "Transaction is created" };
+            var transactionDto = new TransactionDto
+            {
+                TransactionDate = transaction.TransactionDate,
+                Amount = transaction.Amount,
+                BaseCurrency = baseCurrency,
+                TargetCurrency = targetCurrency,
+                ConvertedAmount = transaction.ConvertedAmount,
+                UserName = user.Name
 
-            //return convertedAmount;
+            };
+
+            return new ServiceResponse<TransactionDto>(transactionDto) { Id = new Guid(), IsSuccess = true, Message = "Transaction is created" };
+
         }
 
         public async Task<ServiceResponse<List<CurrencyDto>>> GetCurrencyList()
@@ -99,7 +111,6 @@ namespace MeDirect.Exchange.Application.Services.Implementation
             }
             await UpdateCurrencyCacheAsync(currencyList);
 
-
             return new ServiceResponse<List<CurrencyDto>>(currencyListFromApi) { Id = new Guid(), IsSuccess = true, Message = "Currency list fetched from api and updated the related cache" };
 
         }
@@ -109,6 +120,7 @@ namespace MeDirect.Exchange.Application.Services.Implementation
         {
 
             var transactionHistory = await _transactionRepository.GetAllTransactionHistoryByUserId(userId);
+
 
 
             return new ServiceResponse<List<Transaction>>(transactionHistory) { Id = new Guid(), IsSuccess = true, Message = "User Transaction list is fetched" };

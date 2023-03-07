@@ -10,10 +10,10 @@
         public User User { get; set; }
 
         public int BaseCurrencyId { get; set; }
-        public Currency BaseCurrency { get; set; }
+        public virtual Currency BaseCurrency { get; set; }
 
         public int TargetCurrencyId { get; set; }
-        public Currency TargetCurrency { get; set; }
+        public virtual Currency TargetCurrency { get; set; }
 
         public int? ExchangeRateId { get; set; }
         public ExchangeRate ExchangeRate { get; set; }
